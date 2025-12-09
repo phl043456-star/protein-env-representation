@@ -1,3 +1,12 @@
+# Protein Environment Representation
+
+[![BioRxiv](https://img.shields.io/badge/BioRxiv-2025.04.29.651260-b31b1b.svg)](https://doi.org/10.1101/2025.04.29.651260)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+
+**Official implementation of "Localized Reactivity on Proteins as Riemannian Manifolds"**
+
+
+
 # protein-env-representation
 Environment-vector pipeline and case study scripts for residue-level reactivity analysis.
 # Environment-vector case-study scripts (reproducibility note)
