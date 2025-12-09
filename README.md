@@ -56,24 +56,76 @@ module-wise or class-wise AUCs).
 
 ## 2. Dependencies
 
-All scripts use a standard scientific Python stack. At minimum you will
-need:
+All experiments in this repository were run in a Google Colab environment
+(December 2025). To make the setup fully reproducible, we distinguish between:
 
-- Python 3.x
-- `numpy`
-- `scipy`
-- `scikit-learn`
+1. The **base Colab image** (before any manual `pip install`),
+2. The **additional packages** explicitly installed for this project.
 
-The environment-vector pipeline (`4.6.py`) and some case-study scripts
-also rely on a structure/trajectory library (e.g. **MDTraj**, **MDAnalysis**
-or an equivalent PDB/mmCIF reader) and basic I/O utilities (`json`,
-`argparse`, etc.). The exact list of required packages can be read off
-from the `import` statements at the top of each script.
+### 2.1 Core runtime (base Colab image)
 
-No external machine-learning framework (beyond `scikit-learn`) is used.
-Random forests are implemented via `sklearn.ensemble.RandomForestClassifier`
-with a fixed random seed and deterministic settings, as described in the
-Methods section.
+- **Python**: `3.12.12`  
+  - Build: `main, Oct 10 2025, 08:52:57`  
+  - Compiler: `GCC 11.4.0`
+- **OS**: `Linux-6.6.105+-x86_64-with-glibc2.35`
+
+### 2.2 GPU / CUDA stack
+
+- **GPU**: `Tesla T4`  
+  - Driver: `550.54.15`  
+  - Memory: `15360 MiB`
+- **PyTorch**:
+  - `torch`: `2.9.0+cu126`
+- **CUDA runtime**: `12.6`
+- **cuDNN**: `9.10.2.21`  (reported as `91002`)
+
+### 2.3 Core scientific Python stack (base image)
+
+The following packages are present in the base Colab image and were used
+unchanged:
+
+- `numpy`: `2.0.2`
+- `scipy`: `1.16.3`
+- `pandas`: `2.2.2`
+- `matplotlib`: `3.10.0`
+- `scikit-learn`: `1.6.1`
+
+No external deep-learning framework is required for the main benchmarks:
+random forests are implemented via
+
+- `sklearn.ensemble.RandomForestClassifier`
+
+with a fixed random seed and deterministic settings (see Methods).
+
+### 2.4 Additional biomolecular / structure libraries (installed manually)
+
+On top of the base image described above, we manually installed the
+following packages and used them for all environment-vector computations
+and structure handling:
+
+- `mdtraj`: `1.11.0`
+- `biopython`: `1.86`
+- `rdkit`: `2025.09.3`
+- `openmm`: `8.4.0.dev-4768436`
+
+Any equivalent PDB/mmCIF reader or MD engine may work in principle, but
+**all reported results** in this repository were generated under exactly
+the versions listed here.
+
+### 2.5 Full Colab package snapshot
+
+The Colab image contains a large number of additional packages
+(JAX, TensorFlow, RAPIDS, geospatial libraries, etc.) that are *not*
+used by this codebase. For bit-level reproducibility of the runtime
+actually used in the experiments, we store the full `pip freeze` of the
+environment *after* installing the packages in §2.4 as:
+
+- `environment_colab_full_2025-12.txt`
+
+This file corresponds exactly to the output of:
+
+```bash
+pip freeze > environment_colab_full_2025-12.txt
 
 ## 3. Generating environment features
 
