@@ -1,3 +1,12 @@
+
+Current stable version: 4.7
+
+4.7 introduces a Structure-of-Arrays (SoA) memory layout and global atom
+indexing, allowing the pipeline to process very large complexes
+(e.g. the 70S ribosome, >150k atoms) on a single 16 GB GPU.
+Numerical outputs are equivalent to v4.6; only the memory layout and
+performance characteristics have changed.
+
 # Protein Environment Representation
 
 [![BioRxiv](https://img.shields.io/badge/BioRxiv-2025.04.29.651260-b31b1b.svg)](https://doi.org/10.1101/2025.04.29.651260)
