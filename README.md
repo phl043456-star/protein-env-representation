@@ -28,7 +28,7 @@ from “manuscript section → script → output numbers” explicit.
 
 ## 1. File overview
 
-- `4.6.py`  
+- `4.6.py` or `4.7.py`
   Core environment-vector pipeline. Implements the construction of the
   local environment representation \(E_p\) from input structures (e.g.
   PDB/mmCIF files) and writes out feature matrices such as
