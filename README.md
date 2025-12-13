@@ -59,6 +59,11 @@ from “manuscript section → script → output numbers” explicit.
   pivots, structural shell) and DNA-side core/shell nucleotide labels,
   and reproduces the AUC values reported in the p53 case-study section.
 
+- `6Q97.py`  
+  Case-study script for the tmRNA–SmpB–ribosome rescue complex (PDB ID: **6Q97**).  
+  Loads the precomputed environment features for all protein and RNA residues, constructs Tier-1/Tier-2 labels for tmRNA and SmpB pockets, 16S rRNA decoding-centre sites, the 23S rRNA peptidyl transferase centre, and helicase-like uS3/uS4/uS5 pockets, and assembles the curated hard-negative panel of 323 buried hydrophobic, electrostatic and stacking decoys.  
+  Runs the random-forest evaluation protocol described in the Methods section (StratifiedKFold and GroupKFold) for both global tasks (Tier-1/Tier-2 vs all residues) and adversarial tasks (Tier-1/Tier-1+2 vs hard negatives). The AUC values reported by this script correspond to the 6Q97 rows in the main ribosome case-study table and the hard-negative analysis.
+
 - `1TF5.py`  
   Case-study script for the SecA ATPase motor and preprotein clamp
   (PDB ID: **1TF5**).  
