@@ -1,4 +1,12 @@
 
+Current stable version: 4.7
+
+4.7 introduces a Structure-of-Arrays (SoA) memory layout and global atom
+indexing, allowing the pipeline to process very large complexes
+(e.g. the 70S ribosome, >150k atoms) on a single 16 GB GPU.
+Numerical outputs are equivalent to v4.6; only the memory layout and
+performance characteristics have changed.
+
 ### ⚠️ Note on Reproducibility & Memory Efficiency
 To reproduce the results reported in the manuscript (especially for large complexes like **Ribosome 6Q97**), please enable the `--no-pair-contacts` flag.
 
@@ -7,15 +15,6 @@ This optimization was applied to **all benchmarks** in the study to maximize mem
 # Example command for large complexes (e.g., Ribosome)
 python 4.7.py 6Q97.cif --out-dir results --no-pair-contacts --block-size 64
 
-
-
-Current stable version: 4.7
-
-4.7 introduces a Structure-of-Arrays (SoA) memory layout and global atom
-indexing, allowing the pipeline to process very large complexes
-(e.g. the 70S ribosome, >150k atoms) on a single 16 GB GPU.
-Numerical outputs are equivalent to v4.6; only the memory layout and
-performance characteristics have changed.
 
 # Protein Environment Representation
 
