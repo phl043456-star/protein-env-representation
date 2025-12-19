@@ -1,4 +1,15 @@
 
+### ⚠️ Note on Reproducibility & Memory Efficiency
+To reproduce the results reported in the manuscript (especially for large complexes like **Ribosome 6Q97**), please enable the `--no-pair-contacts` flag.
+
+This optimization was applied to **all benchmarks** in the study to maximize memory efficiency (reducing complexity to $O(N)$) without affecting the accuracy of $E_p$ vectors.
+
+```bash
+# Example command for large complexes (e.g., Ribosome)
+python 4.7.py 6Q97.cif --out-dir results --no-pair-contacts --block-size 64
+
+
+
 Current stable version: 4.7
 
 4.7 introduces a Structure-of-Arrays (SoA) memory layout and global atom
