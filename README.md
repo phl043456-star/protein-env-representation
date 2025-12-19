@@ -4,7 +4,6 @@ To reproduce the results reported in the manuscript (especially for large comple
 
 This optimization was applied to **all benchmarks** in the study to maximize memory efficiency (reducing complexity to $O(N)$) without affecting the accuracy of $E_p$ vectors.
 
-```bash
 # Example command for large complexes (e.g., Ribosome)
 python 4.7.py 6Q97.cif --out-dir results --no-pair-contacts --block-size 64
 
