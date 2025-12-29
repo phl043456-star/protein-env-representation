@@ -45,7 +45,7 @@ from “manuscript section → script → output numbers” explicit.
   All case-study scripts below assume that these feature files have
   already been generated.
 
-- `4rub.py`  
+- `4rubtest.py`  
   Case-study script for Rubisco (PDB ID: **4RUB**).  
   Loads the Rubisco environment features, constructs Tier-1/Tier-2
   labels for the large and small subunits, and runs the random-forest
@@ -53,7 +53,7 @@ from “manuscript section → script → output numbers” explicit.
   and GroupKFold). The AUC values reported by this script correspond
   to the Rubisco rows in the main Rubisco case-study table.
 
-- `2c7c.py`  
+- `2c7ctest.py`  
   Case-study script for the GroEL/GroES chaperonin complex
   (PDB ID: **2C7C**).  
   Loads the 2C7C feature matrix, assigns GroEL/GroES roles, defines the
@@ -61,19 +61,19 @@ from “manuscript section → script → output numbers” explicit.
   inter-ring, IVL anchor, loop support), and evaluates residue-level
   and class-resolved AUCs under the site-grouped protocol.
 
-- `1TSR.py`  
+- `1TSRtest.py`  
   Case-study script for the p53–DNA complex (PDB ID: **1TSR**).  
   Loads the 1TSR features, defines protein-side Tier-1/Tier-2 labels
   (DNA-contact core, Zn cluster, fitness/stability core, allosteric/PPI
   pivots, structural shell) and DNA-side core/shell nucleotide labels,
   and reproduces the AUC values reported in the p53 case-study section.
 
-- `6Q97.py`  
+- `6Q97test.py`  
   Case-study script for the tmRNA–SmpB–ribosome rescue complex (PDB ID: **6Q97**).  
   Loads the precomputed environment features for all protein and RNA residues, constructs Tier-1/Tier-2 labels for tmRNA and SmpB pockets, 16S rRNA decoding-centre sites, the 23S rRNA peptidyl transferase centre, and helicase-like uS3/uS4/uS5 pockets, and assembles the curated hard-negative panel of 323 buried hydrophobic, electrostatic and stacking decoys.  
   Runs the random-forest evaluation protocol described in the Methods section (StratifiedKFold and GroupKFold) for both global tasks (Tier-1/Tier-2 vs all residues) and adversarial tasks (Tier-1/Tier-1+2 vs hard negatives). The AUC values reported by this script correspond to the 6Q97 rows in the main ribosome case-study table and the hard-negative analysis.
 
-- `1TF5.py`  
+- `1TF5test.py`  
   Case-study script for the SecA ATPase motor and preprotein clamp
   (PDB ID: **1TF5**).  
   Loads the 1TF5 features, defines the ATPase, clamp, and C-terminal
@@ -163,7 +163,7 @@ pip freeze > environment_colab_full_2025-12.txt
 
 The scripts do **not** recompute the environment vectors by default; they
 assume that the features for each PDB entry have already been generated
-by `4.6.py` and written to disk.
+by `4.6.py or 4.7.py` and written to disk.
 
 A typical workflow is:
 
@@ -171,7 +171,7 @@ A typical workflow is:
    (e.g. `4rub_clean.pdb`, `2c7c_clean.pdb`, `1tf5_clean.pdb`,
    `1tsr_clean.pdb`).
 
-2. Use `4.6.py` to compute the environment vectors and save them to a
+2. Use `4.6.py or 4.7.py` to compute the environment vectors and save them to a
    directory associated with that structure. The script expects to be
    edited locally so that the input path(s), output directory, grid /
    cutoff parameters, and boolean flags match your environment. After a
@@ -180,7 +180,7 @@ A typical workflow is:
    - `Ep_manifest.json` (residue metadata: chain IDs, residue numbers,
      roles, etc.).
 
-3. Confirm that the shapes and residue counts reported by `4.6.py` match
+3. Confirm that the shapes and residue counts reported by `4.7.py` match
    those in the manuscript for that complex.
 
 The case-study scripts then load these precomputed files by path.
@@ -199,7 +199,9 @@ Each case-study script follows the same pattern:
    From a shell:
 
    ```bash
-   python 4rub.py
-   python 2c7c.py
-   python 1TF5.py
-   python 1TSR.py
+   python 4rubtest.py
+   python 2c7ctest.py
+   python 1TF5test.py
+   python 1TSRtest.py
+   python 6Q97test.py
+   python benchmarkQQQQ.py
