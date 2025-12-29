@@ -44,8 +44,10 @@ from “manuscript section → script → output numbers” explicit.
   `Ep_sim.npy` together with metadata (`Ep_manifest.json`, etc.).
   All case-study scripts below assume that these feature files have
   already been generated.
-
-- `4rubtest.py`  
+- `benchmarkQQQQ.py`
+  End-to-end reproduction script for the Docking Benchmark 5.5 (DB5.5) unbound test set.
+This script internally integrates the core pipeline (4.7.py), allowing for a fully automated workflow. Simply provide the official dataset archive (e.g., benchmark5.5.tgz), and it will handle everything from feature extraction to final scoring (AUPRC/ROC-AUC) in a single execution. Designed to be self-contained and runnable on Colab or local environments.
+- `4rubtest.py`
   Case-study script for Rubisco (PDB ID: **4RUB**).  
   Loads the Rubisco environment features, constructs Tier-1/Tier-2
   labels for the large and small subunits, and runs the random-forest
